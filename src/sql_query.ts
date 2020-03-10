@@ -72,7 +72,7 @@ export default class SqlQuery {
                         return
                     }
                     let operator = SqlQuery.clickhouseOperator(af.operator);
-                    let cond = parts[2] + " " + operator + " "
+                    let cond = parts.slice(2).join('.') + " " + operator + " "
                         + ((af.value.indexOf("'") > -1 || af.value.indexOf(", ") > -1 || af.value.match(/^\s*\d+\s*$/)) ? af.value : "'" + af.value + "'");
                     adhocCondition.push(cond);
                     if (ast.where.length > 0) {
